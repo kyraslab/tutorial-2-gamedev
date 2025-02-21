@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://2rthbaokby2d"]
+
+[ext_resource type="Script" path="res://character_body_2d_2.gd" id="1_j4orp"]
+[ext_resource type="Texture2D" uid="uid://3ruxfsvp87ub" path="res://assets/playerShip1_green.png" id="2_wp2mu"]
+[ext_resource type="PackedScene" uid="uid://y5a4e3ajuy2r" path="res://scenes/StonePlatform.tscn" id="3_3b40l"]
+[ext_resource type="Script" path="res://scenes/area_2d.gd" id="3_hvxl5"]
+[ext_resource type="Texture2D" uid="uid://dcwu8ypraifim" path="res://assets/icon.png" id="4_f01i4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tb1sw"]
+size = Vector2(97, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28d74"]
+size = Vector2(51.25, 44)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+script = ExtResource("1_j4orp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(162, 461)
+shape = SubResource("RectangleShape2D_tb1sw")
+
+[node name="PlayerShip1Green" type="Sprite2D" parent="CharacterBody2D2"]
+position = Vector2(164, 459)
+texture = ExtResource("2_wp2mu")
+
+[node name="ObjectiveArea" type="Area2D" parent="."]
+script = ExtResource("3_hvxl5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectiveArea"]
+position = Vector2(1028, 534)
+shape = SubResource("RectangleShape2D_28d74")
+
+[node name="Icon" type="Sprite2D" parent="ObjectiveArea"]
+position = Vector2(1027, 534)
+scale = Vector2(0.59375, 0.53125)
+texture = ExtResource("4_f01i4")
+
+[node name="PlatformBlue" type="Node2D" parent="."]
+position = Vector2(35, 565)
+
+[node name="StonePlatform8" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(490, 0)
+
+[node name="StonePlatform7" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(420, 0)
+
+[node name="StonePlatform6" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(350, 0)
+
+[node name="StonePlatform5" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(280, 0)
+
+[node name="StonePlatform4" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(210, 0)
+
+[node name="StonePlatform3" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(140, 0)
+
+[node name="StonePlatform2" parent="PlatformBlue" instance=ExtResource("3_3b40l")]
+position = Vector2(70, 0)
+
+[node name="PlatformBlue2" type="Node2D" parent="."]
+position = Vector2(750, 612)
+
+[node name="StonePlatform" parent="PlatformBlue2" instance=ExtResource("3_3b40l")]
+
+[node name="StonePlatform5" parent="PlatformBlue2" instance=ExtResource("3_3b40l")]
+position = Vector2(280, 0)
+
+[node name="StonePlatform4" parent="PlatformBlue2" instance=ExtResource("3_3b40l")]
+position = Vector2(210, 0)
+
+[node name="StonePlatform3" parent="PlatformBlue2" instance=ExtResource("3_3b40l")]
+position = Vector2(140, 0)
+
+[node name="StonePlatform2" parent="PlatformBlue2" instance=ExtResource("3_3b40l")]
+position = Vector2(70, 0)
+
+[connection signal="body_entered" from="ObjectiveArea" to="ObjectiveArea" method="_on_ObjectiveArea_body_entered"]
